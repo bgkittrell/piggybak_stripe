@@ -32,7 +32,7 @@ module PiggybakStripe
                               :masked_number => charge.card.last4 }
           return true
         rescue Stripe::CardError, Stripe::InvalidRequestError => e
-          self.errors.add :payment_method_id, e.message
+          order.errors.add :payment_method_id, e.message
           return false
         end
       end
